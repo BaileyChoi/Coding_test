@@ -1,3 +1,4 @@
+// AxB
 const fs = require("fs");
 const inputData = fs.readFileSync("/dev/stdin").toString().split(" ");
 
