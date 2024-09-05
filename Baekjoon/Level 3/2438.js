@@ -1,4 +1,4 @@
-// 별 찍기 - 2
+// 별 찍기 - 1
 const fs = require("fs");
 const inputData = fs.readFileSync("/dev/stdin").toString();
 
