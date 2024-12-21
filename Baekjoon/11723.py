@@ -1,5 +1,6 @@
 # 집합
 import sys
+
 # sys.stdin = open("example.txt","r")
 input = sys.stdin.readline
 
@@ -20,10 +21,9 @@ for _ in range(M):
         x = int(command[1])
         if x in S:
             S.remove(x)
-        else :
+        else:
             S.add(x)
     elif command[0] == "all":
         S = set(range(1, 21))
     elif command[0] == "empty":
         S.clear()
-
