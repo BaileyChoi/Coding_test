@@ -1,13 +1,7 @@
 function solution(n) {
-    let ans
     
     let string = n.toString();
-    let array = new Array;
-    
-    for (let s of string) {
-        let num = Number(s);
-        array.push(num);
-    }
+    let array = string.split("");
     
     array.sort((a, b) => b - a);
     
