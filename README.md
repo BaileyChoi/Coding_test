@@ -1,13 +1,15 @@
 # 코딩 테스트 공부
 
 ## Algorithm Site
-- [백준](https://www.acmicpc.net) 
-- [프로그래머스](https://school.programmers.co.kr/learn/challenges)
+> [백준](https://www.acmicpc.net)
+> 
+> [프로그래머스](https://school.programmers.co.kr/learn/challenges)
 
 ## Developer
-[BaileyChoi](https://github.com/BaileyChoi)
+> [BaileyChoi](https://github.com/BaileyChoi)
 
 ## Environment
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white)
 ![Github](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)
 
 ## Development
