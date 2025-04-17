@@ -10,7 +10,11 @@ def solution(scoville, K):
     answer = 0
     quotient = 0
     
-    while  len(heap) >= 2 and heap[0] < K :
+    while heap[0] < K :
+
+        if len(heap) < 2 :
+            return -1
+        
         min1 = heapq.heappop(heap)
         min2 = heapq.heappop(heap)
     
@@ -18,4 +22,4 @@ def solution(scoville, K):
         heapq.heappush(heap, quotient)
         answer += 1
     
-    return answer if heap[0] >= K else -1
+    return answer
