@@ -10,7 +10,7 @@ class Solution {
             if (c.equals('(')) {
                 stack.push(c);
             } else {
-                if (!stack.empty() && stack.peek().equals('(')) {
+                if (!stack.empty()) {
                     stack.pop();
                 } else {
                     return false;
