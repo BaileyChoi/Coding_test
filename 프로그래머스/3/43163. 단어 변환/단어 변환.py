@@ -1,35 +1,41 @@
 from collections import deque
 
-def getDiffCount(wordA, wordB):
-    diffCount = 0
-    for i in range(len(wordA)):
-        if wordA[i] != wordB[i]:
-            diffCount += 1
-    
-    return diffCount
-
 def solution(begin, target, words):
-    # BFS로 최단 거리 구하기
+    # BFS로 최단 변환수 구하기
+    N = len(words)
+
     queue = deque()
     visited = set()
-    
-    # 시작점 예약 ( 문자열 begin )
-    queue.append([begin, 0])
+
+    def canChange(word1, word2):
+        count = 0
+        for i in range(len(word1)):
+            if word1[i] != word2[i]:
+                count += 1
+            if count > 1:
+                return False
+        return True
+            
+    # 시작점 예약 (cur, count)
+    queue.append((begin, 0))
     visited.add(begin)
-    
+
     while queue:
         # 현재 노드 방문
-        [cur_word, count] = queue.popleft()
-        
-        # if 현재 노드 == target: return count;
-        if cur_word == target:
+        cur, count = queue.popleft()
+
+        # if cur == target: return count
+        if cur == target:
             return count
-    
-        # 다음 노드 방문
-        for next_word in words:
-            if getDiffCount(cur_word, next_word) == 1:
-                if next_word not in visited:
-                    queue.append([next_word, count + 1])
-                    visited.add(next_word)
         
+        # 다음 노드 예약
+        for word in words:
+            if word not in visited and canChange(cur, word):
+                visited.add(word)
+                queue.append((word, count + 1))
+
     return 0
+
+# 테스트
+print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])) 
+print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log"])) 
