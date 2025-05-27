@@ -1,21 +1,14 @@
-from collections import Counter
+def solution(participants, completion):
+    participants.sort()
+    completion.sort()
 
-def solution(participant, completion):
-    
-    # 방법 1    
-#     dic = {}
-    
-#     for p in participant:
-#         dic[p] = dic.get(p, 0) + 1
+    for p, c in zip(participants, completion):
+        if p != c:
+            return p
         
-#     for c in completion:
-#         dic[c] -= 1
-    
-#     for name in dic:
-#         if dic[name] > 0:
-#             return name
-        
-    # 방법 2
-    answer  = Counter(participant) - Counter(completion)
-    return list(answer.keys())[0]
-  
+    return participants[-1]
+
+# 테스트
+print(solution(["leo", "kiki", "eden"],	["eden", "kiki"]))
+print(solution(["marina", "josipa", "nikola", "vinko", "filipa"], ["josipa", "filipa", "marina", "nikola"]))
+print(solution(["mislav", "stanko", "mislav", "ana"], ["stanko", "ana", "mislav"]))
