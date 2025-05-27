@@ -1,37 +1,20 @@
-from collections import deque
-
 def solution(n, computers):
     answer = 0
 
-    visited = [False] * n
+    def dfs(cur, visited, computers):
+        visited.add(cur)
+        for next in range(n):
+            if computers[cur][next] == 1 and next not in visited:
+                dfs(next, visited, computers)
 
-    for i in range(0, n):
-        if not visited[i]:
-            # dfs(computers, visited, i)
-            bfs(computers,visited, i)
+    visited = set()
+    for i in range(n):
+        if i not in visited:
+            dfs(i, visited, computers) 
             answer += 1
 
     return answer
 
-
-# def dfs(graph, visited, curVertex):
-#     visited[curVertex] = True
-#     for nextVertex in range(len(graph)):
-#         if graph[curVertex][nextVertex] == 1 and not visited[nextVertex]:
-#             dfs(graph, visited, nextVertex)
-
-def bfs(graph, visited, curVertex):
-    queue = deque()
-    
-    queue.append(curVertex)
-    visited[curVertex] = True
-    
-    while queue:
-        curVertex = queue.popleft()
-        
-        for nextVertex in range(len(graph)):
-            if graph[curVertex][nextVertex] == 1 and not visited[nextVertex]:
-                queue.append(nextVertex)
-                visited[nextVertex] = True
-    
-    
+# 테스트
+print(solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
+print(solution(3, [[1, 1, 0], [1, 1, 1], [0, 1, 1]]))
