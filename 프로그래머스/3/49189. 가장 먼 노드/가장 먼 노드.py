@@ -1,38 +1,36 @@
 from collections import deque
 
-def solution(n, edge):
-    # 인접 리스트로 변환
+def solution(n, vertex):
+    # 그래프 생성
     graph = [[] for _ in range(n + 1)]
 
-    # 간선 추가
-    for e in edge:
-        graph[e[0]].append(e[1])
-        graph[e[1]].append(e[0])
+    for a, b in vertex:
+        graph[a].append(b)
+        graph[b].append(a)
 
-    return bfs(graph, n)
-
-
-def bfs(graph, size):
     queue = deque()
-    visited = [False] * (size + 1)
-    distance = [0] * (size + 1)
+    visited = [False] * (n + 1)
+    distances = [0] * (n + 1)
 
+    # 시작점 예약
     queue.append(1)
     visited[1] = True
-    distance[1] = 0
+    distances[1] = 0
 
     while queue:
-        curVertex = queue.popleft()
-        for nextVertex in graph[curVertex]:
-            if not visited[nextVertex]:
-                queue.append(nextVertex)
-                visited[nextVertex] = True
-                distance[nextVertex] = distance[curVertex] + 1
+        # 현재 노드 방문
+        cur = queue.popleft()
 
-    # 가장 먼 거리 구하기
-    maxDistance = max(distance)
+        # 다음 노드 예약
+        for next in graph[cur]:
+            if not visited[next]:
+                visited[next] = True
+                queue.append(next)
+                distances[next] = distances[cur] + 1
 
-    # 가장 먼 거리를 가진 노드의 개수 구하기
-    count = distance.count(maxDistance)
+    max_distance = max(distances)
+    return distances.count(max_distance)
 
-    return count
+
+# 테스트
+print(solution(6, [[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]))
