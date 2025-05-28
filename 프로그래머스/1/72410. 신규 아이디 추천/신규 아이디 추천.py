@@ -1,36 +1,18 @@
+import re
+
 def solution(new_id):
-    answer = ""
     # 1단계
-    new_id = new_id.lower()
-    
+    answer = new_id.lower()
     # 2단계
-    for c in new_id:
-        if c.islower() or c.isdigit() or c in ['-', '_', '.']:
-            answer += c
-    
+    answer = re.sub("[^a-z0-9\-_.]", "",  answer)
     # 3단계
-    while ".." in answer:
-        answer = answer.replace("..", '.')
-        
+    answer = re.sub("\.+", ".", answer)
     # 4단계
-    if answer.startswith('.'):
-        answer = answer[1:]
-    if answer.endswith('.'):
-        answer = answer[:-1]
-        
+    answer = answer.strip(".")
     # 5단계
-    if answer == "":
-        answer = "a"
-        
+    answer = "a" if answer == "" else answer
     # 6단계
-    if len(answer) >= 16:
-        answer = answer[:15]
-        if answer.endswith('.'):
-            answer = answer[:-1]
-    
+    answer = answer[:15].rstrip(".") if len(answer) >= 16 else answer
     # 7단계
-    if len(answer) <= 2:
-        while len(answer) != 3:
-            answer += answer[-1]
-    
+    answer = answer + answer[-1] * (3 - len(answer)) if len(answer) <= 2 else answer
     return answer
