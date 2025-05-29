@@ -6,32 +6,33 @@ def solution(n, wires):
     
     for a, b in wires:
         graph[a].append(b)
-        graph[b].append(a)        
+        graph[b].append(a)
         
-    def dfs(start, visited, graph):
-        visited.add(start)
+    def dfs(start, visited):
         count = 1
+        visited.add(start)
         for next in graph[start]:
             if next not in visited:
-                count += dfs(next, visited, graph)
+                count += dfs(next, visited)
+        
         return count
         
     for a, b in wires:
         # 전선 끊기
         graph[a].remove(b)
-        graph[b].remove(a)   
-    
+        graph[b].remove(a)
+        
         # 송전탑 개수 구하기
         visited = set()
-        count1 = dfs(a, visited, graph)
+        count1 = dfs(a, visited)
         count2 = n - count1
-    
+        
         # 전선 연결
         graph[a].append(b)
-        graph[b].append(a)     
+        graph[b].append(a)
         
-        # 최소 차이 갱신
+        # min_diff 갱신
         diff = abs(count1 - count2)
         min_diff = min(min_diff, diff)
-    
+        
     return min_diff
