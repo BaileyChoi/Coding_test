@@ -1,34 +1,35 @@
+from collections import deque
+
 def solution(info, edges):
     answer = 0
-    n = len(info)
-    graph = [[] for _ in range(n)]
-
-    for a, b in edges:
-        graph[a].append(b)
-        
-    next_nodes = set()
-    next_nodes.add(0)
     
-    def backtrack(cur, sheep, wolf, next_nodes):
-        nonlocal answer
+    queue = deque()
+    
+    queue.append((1, 0, 0, []))
+    
+    while queue:
+        sheep, wolf, cur, nodes = queue.popleft()
         
-        if info[cur]:
-            wolf += 1
-        else:
-            sheep += 1
-            
-        if wolf >= sheep:
-            return
-        
+        # 답 갱신
         answer = max(answer, sheep)
         
-        new_nodes = next_nodes.copy()
-        new_nodes.remove(cur)
-        new_nodes.update(graph[cur])
+        # 자식 노드 추가하기
         
-        for next_node in new_nodes:
-            backtrack(next_node, sheep, wolf, new_nodes)
+        for parent, child in edges:
+            if parent == cur and child not in nodes:
+                nodes.append(child)
     
-    backtrack(0, 0, 0, next_nodes)
-    
+        # 다음 노드 예약
+        for next in nodes:  
+            new_next = nodes.copy()
+            new_next.remove(next)
+            
+            # if 양인 경우:
+            if info[next] == 0:
+                queue.append((sheep + 1, wolf, next, new_next))
+            # else: 늑대인 경우
+            else:
+                if sheep > wolf + 1:
+                    queue.append((sheep, wolf + 1, next, new_next))
+                    
     return answer
