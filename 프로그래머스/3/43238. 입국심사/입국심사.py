@@ -22,4 +22,3 @@ def canPass(times, mid, n):
             return True
     return False
     
-    
