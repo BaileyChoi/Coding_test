@@ -1,9 +1,9 @@
 def solution(array, commands):
     answer = []
-    for command in commands:
-        i, j, k = command
-        sortedArr = array[i - 1:j]
-        sortedArr.sort()
-        answer.append(sortedArr[k - 1])
-        
+    
+    for start, end, order in commands:
+        cut_array = array[start-1:end]
+        sort_array = sorted(cut_array)
+        num = sort_array[order-1]
+        answer.append(num)
     return answer
