@@ -1,7 +1,12 @@
 def solution(citations):
-    n = len(citations)
+    answer = 0
+    
     citations.sort(reverse=True)
-    for i in range(n):
-        if citations[i] < i + 1:
-            return i
-    return n
+    
+    for i, c in enumerate(citations, start=1):
+        if c >= i:
+            answer = i
+        else:
+            break
+            
+    return answer
