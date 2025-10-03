@@ -3,21 +3,16 @@ from collections import deque
 def solution(priorities, location):
     answer = []
     
-    queue = deque(range(len(priorities)))
-    
-    # 우선순위 높은 프로세스 찾기
-    def is_top_rank(cur, queue):
-        for q in queue:
-            if priorities[q] > priorities[cur]:
-                return False
-        return True
+    queue = deque([(i, p) for i, p in enumerate(priorities)])
     
     while queue:
         cur = queue.popleft()
         
-        if is_top_rank(cur, queue):
-            answer.append(cur)
-        else:
+        # 큐 안에 더 높은 우선순위가 있다면 뒤로 보냄
+        if any(cur[1] < q[1] for q in queue):
             queue.append(cur)
+        else:
+            answer.append(cur[0])
             
     return answer.index(location) + 1
+        
