@@ -1,12 +1,9 @@
 def solution(number, k):
-    answer = [int(number[0])]
-    number = number[1:]
+    answer = []
     
     for n in number:
-        n = int(n)
-        
         # 계속 pop하면서 큰 숫자를 앞으로 당겨줌
-        while answer and n > answer[-1] and k > 0:
+        while answer and answer[-1] < n and k > 0:
             answer.pop()
             k -= 1
         
@@ -16,4 +13,4 @@ def solution(number, k):
     if k > 0:
         answer = answer[:-k]
     
-    return ''.join(map(str, answer))
+    return ''.join(answer)
