@@ -1,7 +1,4 @@
 def solution(price, money, count):
-    need = 0
-    
-    for i in range(1, count + 1):
-        need += price * i
+    need = sum(price * i for i in range(1, count + 1))
 
-    return need - money if need >= money else 0
+    return max(0, need - money)
