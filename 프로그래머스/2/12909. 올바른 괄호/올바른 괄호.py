@@ -1,16 +1,13 @@
 def solution(s):
-    stack = []
-    for char in s:
-        if char == "(":
-            stack.append(char)
+    answer = []
+    
+    for c in s:
+        if c == '(':
+            answer.append("(")
         else:
-            if not stack or stack.pop() != "(":
+            if len(answer) == 0:
                 return False
+            if answer[-1] == "(":
+                answer.pop()
 
-    return not stack
-
-# 테스트
-print(solution("()()"))
-print(solution("(())()"))
-print(solution(")()("))
-print(solution("(()("))
+    return True if len(answer) == 0 else False
