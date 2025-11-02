@@ -5,9 +5,9 @@ def solution(s):
         if c == '(':
             answer.append("(")
         else:
-            if len(answer) == 0:
+            if not answer:
                 return False
             if answer[-1] == "(":
                 answer.pop()
 
-    return True if len(answer) == 0 else False
+    return not answer
