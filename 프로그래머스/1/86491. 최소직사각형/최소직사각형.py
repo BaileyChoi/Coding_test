@@ -1,8 +1,9 @@
 def solution(sizes):
-    width, height = [], []
+    big_num = []
+    small_num = []
     
-    for w, h in sizes:
-        width.append(max(w, h))
-        height.append(min(w, h))
-    
-    return max(width) * max(height)
+    for size in sizes:
+        big_num.append(max(size))
+        small_num.append(min(size))
+        
+    return max(big_num) * max(small_num)
