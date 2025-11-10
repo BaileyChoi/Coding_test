@@ -6,5 +6,5 @@ def solution(brown, yellow):
         if total % h == 0:
             w = total // h
             
-            if (w - 2) * (h - 2) == yellow:
+            if 2 * w + 2 * h - 4 == brown:
                 return [w, h]
