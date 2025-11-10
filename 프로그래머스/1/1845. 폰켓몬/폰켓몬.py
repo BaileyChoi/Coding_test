@@ -1,8 +1,5 @@
 def solution(nums):
+    n = len(nums) // 2
+    pocket_set = set(nums)
     
-    n = len(nums)
-    poketmons = set(nums)
-    
-    return min(len(poketmons), n // 2)
-    
-    
+    return len(pocket_set) if len(pocket_set) <= n else n
