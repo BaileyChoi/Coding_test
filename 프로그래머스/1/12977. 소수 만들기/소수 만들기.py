@@ -1,23 +1,15 @@
-import math
+from itertools import combinations
+
+def is_prime(num):
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
 
 def solution(nums):
     answer = 0
-    n = len(nums)
-
-    def isPrime(num):
-        for i in range(2, num):
-            if num % i == 0:
-                return False
-        return True
-
-    for i in range(0, n):
-        for j in range(i + 1, n):
-            for k in range(j + 1, n):
-                if isPrime(nums[i] + nums[j] + nums[k]):
-                    answer += 1
+    
+    for n in combinations(nums, 3):
+        answer += is_prime(sum(n))
 
     return answer
-
-# 테스트
-print(solution([1,2,3,4]))
-print(solution([1,2,7,6,4]))
