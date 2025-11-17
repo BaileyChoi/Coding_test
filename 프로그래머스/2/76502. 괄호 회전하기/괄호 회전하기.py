@@ -1,12 +1,12 @@
 def is_correct(s):
-    new_s = ""
+    stack = []
     for c in s:
-        if new_s and ((new_s[-1] == "(" and c == ")") or (new_s[-1] == "[" and c == "]") or (new_s[-1] == "{" and c == "}")):
-            new_s = new_s[:-1]
+        if stack and ((stack[-1] == "(" and c == ")") or (stack[-1] == "[" and c == "]") or (stack[-1] == "{" and c == "}")):
+            stack.pop()
         else:
-            new_s += c
+            stack.append(c)
     
-    return True if not new_s else False
+    return True if not stack else False
 
 def solution(s):
     answer = 0
