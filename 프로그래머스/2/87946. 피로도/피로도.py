@@ -9,11 +9,9 @@ def solution(k, dungeons):
         success = 0
         for need, consume in explore:
             if exhaust < need:
-                continue
+                break
             exhaust -= consume
-            if exhaust >= 0:
-                success += 1
-                
+            success += 1
         answer = max(answer, success)
     
     return answer
