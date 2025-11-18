@@ -7,7 +7,7 @@ def solution(priorities, location):
     while queue:
         loc, pri = queue.popleft()
         
-        if queue and pri < max(list(queue), key= lambda x : x[1])[1]:
+        if queue and pri < max(queue, key= lambda x : x[1])[1]:
             queue.append((loc, pri))
         else:
             if loc == location:
