@@ -1,4 +1,12 @@
-from collections import Counter
-
 def solution(participant, completion):
-    return list(Counter(participant) - Counter(completion))[0]
+    dict = {}
+    
+    for p in participant:
+        dict[p] = dict.get(p, 0) + 1
+    
+    for c in completion:
+        dict[c] -= 1
+        
+    for key, value in dict.items():
+        if value == 1:
+            return key
