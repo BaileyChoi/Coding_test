@@ -1,20 +1,14 @@
 from collections import deque
 
 def solution(priorities, location):
-    queue = deque()
-    
-    for i in range(len(priorities)):
-        queue.append((priorities[i], i))
+    queue = deque((i, p) for i, p in enumerate(priorities))
     
     order = 1
     while queue:
-        pri, loc = queue.popleft()
+        loc, pri = queue.popleft()
         
-        if not queue:
-            return order
-        
-        if pri < max(list(queue), key= lambda x : x[0])[0]:
-            queue.append((pri, loc))
+        if queue and pri < max(list(queue), key= lambda x : x[1])[1]:
+            queue.append((loc, pri))
         else:
             if loc == location:
                 return order
