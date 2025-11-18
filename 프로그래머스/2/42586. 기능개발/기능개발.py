@@ -1,20 +1,15 @@
-from collections import deque
 import math
 
 def solution(progresses, speeds):
-    answer = []
-    queue = deque()
+    days = []
+    for p, s in zip(progresses, speeds):
+        days.append(math.ceil((100 - p) / s))
     
-    for i in range(len(progresses)):
-        queue.append(math.ceil((100 - progresses[i]) / speeds[i]))
-        
-    while queue:
-        current = queue.popleft()
-        deploy_num = 1
-        
-        while queue and queue[0] <= current:
-            queue.popleft()
-            deploy_num += 1
-        answer.append(deploy_num)
-    
-    return answer
+    answer = {}
+    answer[days[0]] = 1
+    for i in range(1, len(days)):
+        if days[i] < days[i - 1]:
+            days[i] = days[i - 1]
+        answer[days[i]] = answer.get(days[i], 0) + 1
+            
+    return list(answer.values())
