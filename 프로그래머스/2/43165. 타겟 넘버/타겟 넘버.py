@@ -1,13 +1,11 @@
 def solution(numbers, target):
-    def dfs(index, current_sum):
-        if index == len(numbers):
-            if current_sum == target:
+    
+    def dfs(i, result):        
+        if i == len(numbers):
+            if result == target:
                 return 1
-            else: 
-                return 0
-        return dfs(index + 1, current_sum + numbers[index]) + dfs(index + 1, current_sum - numbers[index])
+            return 0
         
-    return dfs(0, 0)
-    
-    
- 
+        return dfs(i + 1, result + numbers[i]) + dfs(i + 1, result - numbers[i])
+        
+    return dfs(0, 0) 
