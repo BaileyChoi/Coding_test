@@ -1,7 +1,7 @@
 def solution(numbers, target):
     answer = 0
     
-    def dfs(i, result):        
+    def dfs(i, result):
         nonlocal answer
         
         if i == len(numbers):
@@ -11,7 +11,7 @@ def solution(numbers, target):
         
         dfs(i + 1, result + numbers[i])
         dfs(i + 1, result - numbers[i])
-        
+    
     dfs(0, 0)
     
-    return answer 
+    return answer
