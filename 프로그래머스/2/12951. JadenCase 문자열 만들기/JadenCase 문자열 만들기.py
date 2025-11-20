@@ -1,2 +1,5 @@
 def solution(s):
-    return ' '.join([word.capitalize() for word in s.split(" ")])
+    answer = []
+    for word in s.split(" "):
+        answer.append(word.capitalize())
+    return " ".join(answer)
