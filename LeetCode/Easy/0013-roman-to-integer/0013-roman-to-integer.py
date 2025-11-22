@@ -5,11 +5,7 @@ class Solution:
         n = len(s)
 
         for i, sym in enumerate(s):
-            if i + 1 < n and sym == "I" and (s[i + 1] in ("V", "X")):
-                answer -= values[sym]
-            elif i + 1 < n and sym == "X" and (s[i + 1] in ("L", "C")):
-                answer -= values[sym]
-            elif i + 1 < n and sym == "C" and (s[i + 1] in ("D", "M")):
+            if i + 1 < n and values[sym] < values[s[i + 1]]:
                 answer -= values[sym]
             else:
                 answer += values[sym]
