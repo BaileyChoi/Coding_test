@@ -1,25 +1,21 @@
 import heapq
 
 def solution(scoville, K):
+    answer = 0
+    
     heap = []
     
-    for s in scoville :
+    for s in scoville:
         heapq.heappush(heap, s)
-    # heapq.heapify(scoville)
-    
-    answer = 0
-    quotient = 0
-    
-    while heap[0] < K :
-
-        if len(heap) < 2 :
-            return -1
+                
+    while len(heap) > 1:
+        if heap[0] >= K:
+            return answer
         
-        min1 = heapq.heappop(heap)
-        min2 = heapq.heappop(heap)
-    
-        quotient = min1 + (2 * min2)
-        heapq.heappush(heap, quotient)
+        num1 = heapq.heappop(heap)
+        num2 = heapq.heappop(heap)
+        
+        heapq.heappush(heap, num1 + num2 * 2)
         answer += 1
-    
-    return answer
+
+    return answer if heap[0] >= K else -1
