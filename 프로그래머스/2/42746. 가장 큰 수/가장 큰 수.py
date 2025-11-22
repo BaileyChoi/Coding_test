@@ -1,5 +1,4 @@
 def solution(numbers):
-    nums = list(map(str, numbers))
-    nums.sort(key=lambda x: x * 4, reverse=True)
-    
-    return '0' if nums[0] == '0' else ''.join(nums)
+    str_numbers = list(map(str, numbers))
+    str_numbers = sorted(str_numbers, key=lambda x:x * 4, reverse=True)
+    return ''.join(str_numbers) if str_numbers[0] != '0' else '0'
