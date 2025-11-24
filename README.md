@@ -4,6 +4,8 @@
 > [백준](https://www.acmicpc.net)
 > 
 > [프로그래머스](https://school.programmers.co.kr/learn/challenges)
+>
+> [LeetCode](https://leetcode.com/problemset/algorithms)
 
 ## Developer
 > [BaileyChoi](https://github.com/BaileyChoi)
@@ -14,4 +16,5 @@
 
 ## Development
 ![JavaScript](https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black)
+![Java](https://img.shields.io/badge/Java-000000?style=for-the-badge&logo=OpenJDK&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white)
