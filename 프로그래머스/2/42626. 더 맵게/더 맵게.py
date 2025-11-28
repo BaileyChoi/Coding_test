@@ -3,19 +3,16 @@ import heapq
 def solution(scoville, K):
     answer = 0
     
-    heap = []
+    heapq.heapify(scoville)
     
-    for s in scoville:
-        heapq.heappush(heap, s)
-                
-    while len(heap) > 1:
-        if heap[0] >= K:
+    while len(scoville) > 1:
+        if scoville[0] >= K:
             return answer
         
-        num1 = heapq.heappop(heap)
-        num2 = heapq.heappop(heap)
+        s1 = heapq.heappop(scoville)
+        s2 = heapq.heappop(scoville)
         
-        heapq.heappush(heap, num1 + num2 * 2)
         answer += 1
-
-    return answer if heap[0] >= K else -1
+        heapq.heappush(scoville, s1 + s2 * 2)
+        
+    return -1 if scoville[0] < K else answer
