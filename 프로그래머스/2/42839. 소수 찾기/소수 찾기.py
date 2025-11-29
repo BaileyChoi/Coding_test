@@ -1,26 +1,25 @@
-import itertools
+from itertools import permutations
 
-def isPrime(x):
-    if x <= 1 :
-        return False
-    for i in range(2,x):
-        if x % i == 0:
+def is_prime(num):
+        if num == 0 or num == 1:
             return False
-    return True
-
-
+        
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        
+        return True
+    
 def solution(numbers):
-    ## 순열 만들기
-    nums = set()
-    for i in range(1, len(numbers)+1):
-        for n in itertools.permutations(numbers, i):
-            num = int(''.join(n))
-            nums.add(num)
-    
     answer = 0
-    for n in nums:
-        if isPrime(n) == True:
+    num_set = set()
+    
+    for i in range(1, len(numbers) + 1):
+        for num in permutations(numbers, i):
+            num_set.add(int(''.join(num)))
+        
+    for num in num_set:
+        if is_prime(num):
             answer += 1
-    
-    
+        
     return answer
