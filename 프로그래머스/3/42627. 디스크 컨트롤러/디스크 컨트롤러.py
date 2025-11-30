@@ -16,14 +16,13 @@ def solution(jobs):
             heapq.heappush(heap, (l, s, idx))
             idx += 1
             
-        if not heap:
+        if heap:
+            l, s, i = heapq.heappop(heap)
+        
+            curTime += l
+            total += curTime - s
+            finished += 1  
+        else:
             curTime = jobs[idx][0]
-            continue
         
-        l, s, i = heapq.heappop(heap)
-        
-        curTime += l
-        total += curTime - s
-        finished += 1
-    
     return total // n
