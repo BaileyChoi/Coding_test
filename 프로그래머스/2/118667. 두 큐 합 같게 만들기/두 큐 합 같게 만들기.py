@@ -11,9 +11,7 @@ def solution(queue1, queue2):
     sum2 = sum(queue2)
     
     while answer <= n * 4:
-        if sum1 == sum2:
-            return answer
-        elif sum1 > sum2:
+        if sum1 > sum2:
             val = queue1.popleft()
             queue2.append(val)
             sum2 += val
@@ -23,6 +21,8 @@ def solution(queue1, queue2):
             queue1.append(val)
             sum1 += val
             sum2 -= val
+        else:
+            return answer
         answer += 1
             
     return -1
