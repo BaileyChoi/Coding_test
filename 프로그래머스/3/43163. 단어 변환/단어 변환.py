@@ -1,32 +1,28 @@
 from collections import deque
 
+def can_change(w1, w2):
+    diff = 0
+    for c1, c2 in zip(w1, w2):
+        if c1 != c2:
+            diff += 1
+        if diff > 1:
+            return False
+    return diff == 1
+
 def solution(begin, target, words):
     queue = deque()
     visited = set()
-    
-    def canChange(word1, word2):
-        diff = 0
-        for i in range(len(word1)):
-            if word1[i] != word2[i]:
-                diff += 1
-            if diff >= 2:
-                return False
-        return True
-    
-    
     queue.append((begin, 0))
-    visited.add(begin)
     
     while queue:
-        cur, count = queue.popleft()
+        cur, change = queue.popleft()
         
         if cur == target:
-            return count
+            return change
         
-        for word in words:
-            if canChange(cur, word):
-                if word not in visited:
-                    visited.add(word)
-                    queue.append((word, count + 1))
-                    
+        for new in words:
+            if new not in visited and can_change(cur, new):
+                visited.add(new)
+                queue.append((new, change + 1))
+                
     return 0
