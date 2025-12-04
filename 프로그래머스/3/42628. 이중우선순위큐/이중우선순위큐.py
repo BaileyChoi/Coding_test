@@ -10,7 +10,7 @@ def solution(operations):
             heapq.heappush(heap, int(num))
         elif do == 'D' and heap:
             if num == "1":
-                heap = heapq.nlargest(len(heap), heap)[1:]
+                heap.remove(max(heap))
                 heapq.heapify(heap)
             else:
                 heapq.heappop(heap)
