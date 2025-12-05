@@ -5,6 +5,9 @@ def solution(sequence, k):
     n = len(sequence)
     hap = sequence[0]
     
+    best_len = float('inf')
+    best = [0, 0]
+    
     while left < n and right < n:
         if hap < k:
             right += 1
@@ -14,11 +17,15 @@ def solution(sequence, k):
             hap -= sequence[left]
             left += 1
         else:
-            answer.append([left, right])
+            cur_len = right - left
+            if cur_len < best_len:
+                best_len = cur_len
+                best = [left, right]
+            
             right += 1
             if right < n:
                 hap += sequence[right]
     
-    return sorted(answer, key=lambda x: x[1] - x[0])[0]
+    return best
             
     
