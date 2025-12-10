@@ -5,8 +5,8 @@ def solution(s, n):
         if c == ' ':
             answer += ' '
         elif c.isupper():
-            answer += chr((ord(c) - 65 + n) % 26 + 65)
+            answer += chr((ord(c) - ord('A') + n) % 26 + ord('A'))
         else:
-            answer += chr((ord(c) - 97 + n) % 26 + 97)
+            answer += chr((ord(c) - ord('a') + n) % 26 + ord('a'))
     
     return answer
