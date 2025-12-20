@@ -1,22 +1,17 @@
-def attack(num):
-    count = 0
-    
-    for i in range(1, int(num ** 0.5) + 1):
-        if num % i == 0:
-            if i * i == num:
-                count += 1
-            else:
-                count += 2
-    
-    return count
-
 def solution(number, limit, power):
     answer = 0
+
+    # 에라토스테네스의 체
+    divisor = [0] * (number + 1)
     
     for i in range(1, number + 1):
-        attackk = attack(i)
-        if attackk <= limit:
-            answer += attackk
+        for j in range(i, number + 1, i):
+            divisor[j] += 1
+    
+    # 풀이
+    for i in range(1, number + 1):
+        if divisor[i] <= limit:
+            answer += divisor[i]
         else:
             answer += power
     
