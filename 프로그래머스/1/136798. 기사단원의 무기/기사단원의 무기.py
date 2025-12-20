@@ -1,12 +1,9 @@
 def attack(num):
     count = 0
     
-    if num == 1:
-        return 1
-    
     for i in range(1, int(num ** 0.5) + 1):
         if num % i == 0:
-            if i == num ** 0.5:
+            if i * i == num:
                 count += 1
             else:
                 count += 2
