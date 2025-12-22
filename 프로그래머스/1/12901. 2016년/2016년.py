@@ -1,4 +1,5 @@
-import datetime
-
 def solution(a, b):
-    return datetime.date(2016, a, b).strftime('%a').upper()
+    date = ['FRI','SAT','SUN','MON','TUE','WED','THU']
+    month = [31,29,31,30,31,30,31,31,30,31,30,31]
+    
+    return date[(sum(month[:a - 1]) + b - 1) % 7] 
