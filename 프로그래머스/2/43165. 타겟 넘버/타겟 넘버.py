@@ -10,8 +10,7 @@ def solution(numbers, target):
             return
         
         dfs(i + 1, result + numbers[i])
-        dfs(i + 1, result - numbers[i])
-    
+        dfs(i + 1, result - numbers[i])                       
+            
     dfs(0, 0)
-    
     return answer
