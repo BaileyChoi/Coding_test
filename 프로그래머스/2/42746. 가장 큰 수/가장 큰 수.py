@@ -1,4 +1,4 @@
 def solution(numbers):
-    numbers.sort(key=lambda s: str(s) * 4, reverse=True)
-    
-    return ''.join(map(str, numbers)) if numbers[0] != 0 else '0' 
+    sorted_num = sorted(map(str, numbers), key=lambda x:x * 4, reverse=True)
+    answer = ''.join(sorted_num) 
+    return '0' if answer[0] == '0' else answer
