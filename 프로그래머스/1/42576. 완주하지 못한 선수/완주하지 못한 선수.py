@@ -1,12 +1,12 @@
 def solution(participant, completion):
-    dict = {}
+    dic = {}
     
     for p in participant:
-        dict[p] = dict.get(p, 0) + 1
-    
+        dic[p] = dic.get(p, 0) + 1
+                
     for c in completion:
-        dict[c] -= 1
+        dic[c] -= 1
         
-    for key, value in dict.items():
+    for key, value in dic.items():
         if value == 1:
             return key
