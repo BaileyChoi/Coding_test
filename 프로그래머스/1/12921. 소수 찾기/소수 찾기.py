@@ -1,15 +1,9 @@
-def isPrime(num):
-    for i in range(2, int(num ** 0.5) + 1):
-        if num % i == 0:
-            return False
-    
-    return True
-
 def solution(n):
-    answer = 0
+    sieve = [True] * (n + 1)
+    sieve[0], sieve[1] = False, False
     
-    for i in range(2, n + 1):
-        if isPrime(i):
-            answer += 1
-    
-    return answer
+    for i in range(2, int(n ** 0.5) + 1):
+        if sieve[i]:
+            for j in range(i * i, n + 1, i):                 sieve[j] = False
+            
+    return sum(sieve)
