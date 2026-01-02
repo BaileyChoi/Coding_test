@@ -1,24 +1,32 @@
 from itertools import combinations
 
 def solution(relation):
-    row = len(relation)
-    col = len(relation[0])
+    candidate_keys = []
+    
+    row_len = len(relation)
+    col_len = len(relation[0])
 
-    candy_keys = []
-    
-    for i in range(1, col + 1):
-        for comb in combinations(range(col), i):
-            temp = [tuple(item[c] for c in comb) for item in relation]
+    for length in range(1, col_len + 1):
+        for cols in combinations(range(col_len), length):
+            minimality = True
+            row_set = set()
+
+            # 최소성 체크
+            for key in candidate_keys:
+                if set(key).issubset(set(cols)):
+                    minimality = False
+                    break
+            if not minimality:
+                continue
+                
+            # 유일성 체크
+            for r in range(row_len):
+                row_str = ""
+                for c in cols:
+                    row_str += relation[r][c]
+                row_set.add(row_str)
             
-            if len(set(temp)) == row:
-                is_minimal = True
-                   
-                for key in candy_keys:
-                    if set(key).issubset(set(comb)):
-                        is_minimal = False
-                        break
-                   
-                if is_minimal:
-                   candy_keys.append(comb)
+            if len(row_set) == row_len:
+                candidate_keys.append(cols)
     
-    return len(candy_keys)
+    return len(candidate_keys)
