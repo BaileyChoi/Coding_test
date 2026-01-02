@@ -18,12 +18,7 @@ def solution(n, results):
                     graph[j][i] = 1
                     
     for i in range(n):
-        count = 0
-        for j in range(n):
-            if graph[i][j] != 0:
-                count += 1
-                
-        if count == n - 1:
+        if graph[i].count(0) == 1:
             answer += 1
     
     return answer
