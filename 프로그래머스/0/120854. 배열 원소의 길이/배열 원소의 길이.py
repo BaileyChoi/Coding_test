@@ -1,7 +1,2 @@
 def solution(strlist):
-    answer = []
-    
-    for word in strlist:
-        answer.append(len(word))
-        
-    return answer
+    return list(map(len, strlist))
