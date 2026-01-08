@@ -1,2 +1,2 @@
 n = int(input())
-print(n, ("is even" if n % 2 == 0 else "is odd"))
+print(f"{n} is {'even' if n % 2 == 0 else 'odd'}")
