@@ -1,8 +1,2 @@
 def solution(my_string):
-    answer = 0
-    
-    for c in my_string:
-        if c.isdecimal():
-            answer += int(c)
-    
-    return answer
+    return sum(int(n) for n in my_string if n.isdigit())
