@@ -1,9 +1,4 @@
-def solution(my_string):
-    answer = ''
-    moeum = ['a','e','i','o','u']
+import re
 
-    for c in my_string:
-        if c not in moeum:
-            answer += c
-    
-    return answer
+def solution(my_string):
+    return re.sub('[aeiou]', '', my_string)
