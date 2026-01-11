@@ -1,22 +1,23 @@
+from collections import defaultdict
+
 def solution(id_list, report, k):
-    # 유저 리스트 재생성 ([id, 메일 수])
-    user_list = {id: 0 for id in id_list}
+    answer = [0] * len(id_list)
     
-    # 신고당한 유저별 신고자 배열 {신고당한 사람: 신고자1, 신고자2..}
-    report_list = {id: [] for id in id_list}
-    
-    # 중복 신고 제거
-    report = set(report)
-    
-    # 신고 처리
+    # 신고 처리) 신고당한 사람: [신고자, 신고자, ...]
+    report_set = defaultdict(set)
     for r in report:
         reporter, reported = r.split(" ")
-        report_list[reported].append(reporter)
-    
-    # 정지된 유저를 신고한 사람에게 메일 발송
-    for reported, reporters in report_list.items():
-        if len(reporters) >= k:
-            for reporter in reporters:
-                user_list[reporter] += 1
+        report_set[reported].add(reporter)
+        
+    # 메일 건수 처리) 신고자: 건수
+    mail_set = defaultdict(set)
+    for reported, reporter in report_set.items():
+        if len(reporter) >= k:
+            for r in reporter:
+                mail_set[r] = mail_set.get(r, 0) + 1
             
-    return list(user_list.values())
+    for reporter, num in mail_set.items():
+        i = id_list.index(reporter)
+        answer[i] = num 
+            
+    return answer
