@@ -9,15 +9,10 @@ def solution(id_list, report, k):
         reporter, reported = r.split(" ")
         report_set[reported].add(reporter)
         
-    # 메일 건수 처리) 신고자: 건수
-    mail_set = defaultdict(set)
+    # 메일 건수 처리
     for reported, reporter in report_set.items():
         if len(reporter) >= k:
             for r in reporter:
-                mail_set[r] = mail_set.get(r, 0) + 1
-            
-    for reporter, num in mail_set.items():
-        i = id_list.index(reporter)
-        answer[i] = num 
+                answer[id_list.index(r)] += 1
             
     return answer
