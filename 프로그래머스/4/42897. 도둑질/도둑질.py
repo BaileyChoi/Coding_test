@@ -2,14 +2,13 @@ def solution(money):
     n = len(money)
     
     def rob(l, r):
-        m = r - l + 1
-        dp = [0] * m
-        dp[0] = money[l]
-        dp[1] = max(money[l], money[l + 1])
+        dp = [0] * n
+        dp[l] = money[l]
+        dp[l + 1] = max(money[l], money[l + 1])
         
-        for i in range(2, m):
-            dp[i] = max(dp[i - 1], money[l + i] + dp[i - 2])     
+        for i in range(l + 2, r + 1):
+            dp[i] = max(dp[i - 1], dp[i - 2] + money[i])     
         
-        return dp[-1]
+        return dp[r]
     
     return max(rob(0, n - 2), rob(1, n - 1))
