@@ -1,18 +1,15 @@
 def solution(money):
+    n = len(money)
     
-    def rob(arr):
-        n = len(arr)
+    def rob(l, r):
+        m = r - l + 1
+        dp = [0] * m
+        dp[0] = money[l]
+        dp[1] = max(money[l], money[l + 1])
         
-        dp = [0] * n
-        dp[0] = arr[0]
-        dp[1] = max(arr[0], arr[1])
+        for i in range(2, m):
+            dp[i] = max(dp[i - 1], money[l + i] + dp[i - 2])     
         
-        for i in range(2, n):
-            dp[i] = max(dp[i - 1], dp[i - 2] + arr[i])
-            
         return dp[-1]
-
-    if len(money) == 1:
-        return money[0]
     
-    return max(rob(money[:-1]), rob(money[1:]))
+    return max(rob(0, n - 2), rob(1, n - 1))
