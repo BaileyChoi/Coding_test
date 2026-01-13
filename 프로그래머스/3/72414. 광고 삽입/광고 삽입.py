@@ -13,14 +13,14 @@ def solution(play_time, adv_time, logs):
     play = to_sec(play_time)
     adv = to_sec(adv_time)
 
-    diff = [0] * (play + 2)
+    diff = [0] * (play + 1)
     for log in logs:
         start_str, end_str = log.split("-")
         start, end = to_sec(start_str), to_sec(end_str)
         diff[start] += 1
         diff[end] -= 1
         
-    prefix = [0] * (play + 2)
+    prefix = [0] * (play + 1)
     cur = 0
     for t in range(play):
         cur += diff[t]
@@ -28,7 +28,7 @@ def solution(play_time, adv_time, logs):
         
     best = 0
     best_sum = prefix[adv] - prefix[0]
-    for start in range(1, play - adv + 1):
+    for start in range(play - adv + 1):
         cur_sum = prefix[start + adv] - prefix[start]
         if cur_sum > best_sum:
             best_sum = cur_sum
