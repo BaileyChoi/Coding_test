@@ -20,24 +20,18 @@ def solution(play_time, adv_time, logs):
         diff[start] += 1
         diff[end] -= 1
         
-    viewers = [0] * (play + 1)
+    prefix = [0] * (play + 2)
     cur = 0
     for t in range(play):
         cur += diff[t]
-        viewers[t] = cur
+        prefix[t + 1] = prefix[t] + cur
         
-    prefix = [0] * (play + 2)
-    for t in range(play):
-        prefix[t + 1] = prefix[t] + viewers[t]
-        
-    best_start = 0
+    best = 0
     best_sum = prefix[adv] - prefix[0]
-    
     for start in range(1, play - adv + 1):
-        end = start + adv
-        cur_sum = prefix[end] - prefix[start]
+        cur_sum = prefix[start + adv] - prefix[start]
         if cur_sum > best_sum:
             best_sum = cur_sum
-            best_start = start
+            best = start
             
-    return to_hms(best_start)
+    return to_hms(best)
