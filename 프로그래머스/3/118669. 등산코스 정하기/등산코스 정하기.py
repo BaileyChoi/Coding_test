@@ -40,7 +40,8 @@ def solution(n, paths, gates, summits):
             if new_intensity < dist[nxt]:
                 dist[nxt] = new_intensity
                 heapq.heappush(pq, (new_intensity, nxt))
-                
+    
+    # 정답 선택
     best_summit = None
     best_intensity = INF
 
