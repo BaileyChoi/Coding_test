@@ -1,3 +1,5 @@
-from collections import Counter
 def solution(before, after):
-    return 1 if Counter(after) - Counter(before) == {} else 0 
+    before = sorted(before)    
+    after = sorted(after)
+    
+    return 1 if before == after else 0
