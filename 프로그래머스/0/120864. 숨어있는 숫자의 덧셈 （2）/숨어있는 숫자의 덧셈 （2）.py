@@ -1,9 +1,4 @@
 def solution(my_string):
-    answer = ''
-    for i in my_string:
-        if i.isdigit():
-            answer += i
-        else:
-            answer += ' '
+    string = ''.join(i if i.isdigit() else ' ' for i in my_string)
             
-    return sum(int(i) for i in answer.split())
+    return sum(int(i) for i in string.split())
