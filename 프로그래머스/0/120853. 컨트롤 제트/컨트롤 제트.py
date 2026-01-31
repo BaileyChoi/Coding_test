@@ -1,10 +1,10 @@
 def solution(s):
-    answer = 0
-    s = s.split(" ")
-    for i in range(len(s)):
-        if s[i] == 'Z':
-            answer -= int(s[i - 1])
+    stack = []
+
+    for i in s.split(" "):
+        if i == 'Z':
+            stack.pop()
         else:
-            answer += int(s[i])
+            stack.append(int(i))
     
-    return answer
+    return sum(stack)
