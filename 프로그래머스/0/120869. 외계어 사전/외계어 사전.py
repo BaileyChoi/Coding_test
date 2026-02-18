@@ -1,8 +1,2 @@
 def solution(spell, dic):
-    spell_set = set(spell)
-    
-    for d in dic:
-        if spell_set == set(d):
-            return 1
-        
-    return 2
+    return 1 if any(set(spell) == set(d) for d in dic) else 2
