@@ -1,6 +1,10 @@
 def solution(score):
-    averages = [(a + b) / 2 for a, b in score]
+    averages = [sum(s) / 2 for s in score]
     sorted_avg = sorted(averages, reverse=True)
     
+    rank = {}
+    for i, v in enumerate(sorted_avg):
+        if v not in rank:
+            rank[v] = i + 1
     
-    return [sorted_avg.index(avg) + 1 for avg in averages]
+    return [rank[v] for v in averages]
