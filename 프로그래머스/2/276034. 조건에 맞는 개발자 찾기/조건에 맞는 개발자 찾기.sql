@@ -1,5 +1,5 @@
 -- 코드를 작성해주세요
-SELECT DISTINCT
+SELECT
     ID, 
     EMAIL, 
     FIRST_NAME, 
