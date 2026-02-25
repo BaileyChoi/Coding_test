@@ -1,3 +1,2 @@
 str = input()
-for c in str:
-    print(c)
+print('\n'.join(str))
