@@ -1,17 +1,11 @@
 def solution(arr, n):
-    answer = []
+    N = len(arr)
     
-    if len(arr) % 2 == 1:
-        for i, a in enumerate(arr):
-            if i % 2 == 0:
-                answer.append(a + n)
-            else:
-                answer.append(a)
+    if N % 2:
+        for i in range(0, N, 2): 
+            arr[i] += n
     else:
-        for i, a in enumerate(arr):
-            if i % 2 == 0:
-                answer.append(a)
-            else:
-                answer.append(a + n)
-                
-    return answer
+        for i in range(1, N, 2): 
+            arr[i]+=n
+    
+    return arr
