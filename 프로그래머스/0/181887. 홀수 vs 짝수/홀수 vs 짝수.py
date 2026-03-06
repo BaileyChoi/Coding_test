@@ -1,10 +1,2 @@
 def solution(num_list):
-    hol, zak = 0, 0
-    
-    for i, n in enumerate(num_list):
-        if i % 2:
-            hol += n
-        else:
-            zak += n
-    
-    return max(hol, zak)
+    return max(sum(num_list[::2]), sum(num_list[1::2]))
