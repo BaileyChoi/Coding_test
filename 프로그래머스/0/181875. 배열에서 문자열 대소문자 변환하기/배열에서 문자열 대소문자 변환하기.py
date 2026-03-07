@@ -1,10 +1,2 @@
 def solution(strArr):
-    answer = []
-    
-    for i, word in enumerate(strArr):
-        if i % 2:
-            answer.append(word.upper())
-        else:
-            answer.append(word.lower())
-        
-    return answer
+    return [word.upper() if i % 2 else word.lower() for i, word in enumerate(strArr)]
