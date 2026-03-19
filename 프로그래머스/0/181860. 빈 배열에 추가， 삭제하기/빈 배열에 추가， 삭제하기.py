@@ -1,12 +1,10 @@
 def solution(arr, flag):
     answer = []
     
-    for i, v in enumerate(flag):
-        if v:
-            for j in range(arr[i]):
-                answer.append(arr[i])
-                answer.append(arr[i])
+    for i, j in zip(arr, flag):
+        if j:
+            answer += [i] * i * 2
         else:
-            answer = answer[:-arr[i]]
+            answer = answer[:-i]
             
     return answer
