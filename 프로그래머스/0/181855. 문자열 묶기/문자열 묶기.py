@@ -1,7 +1,7 @@
 def solution(strArr):
-    answer = {}
+    answer = [0] * 31
     
     for s in strArr:
-        answer[len(s)] = answer.get(len(s), 0) + 1
+        answer[len(s)] += 1
         
-    return max(answer.values())
+    return max(answer)
