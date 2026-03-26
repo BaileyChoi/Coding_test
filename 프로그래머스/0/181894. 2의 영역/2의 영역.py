@@ -1,9 +1,5 @@
 def solution(arr):
-    try:
-        stwo = arr.index(2)
-    except:
+    if 2 not in arr:
         return [-1]
     
-    etwo = len(arr) - arr[::-1].index(2) - 1
-    
-    return arr[stwo:etwo + 1]
+    return arr[arr.index(2): len(arr) - arr[::-1].index(2)]
