@@ -1,11 +1,2 @@
 def solution(picture, k):
-    answer = []
-    
-    for pic in picture:
-        line = ""
-        for p in pic:
-            line += p * k
-        for i in range(k):
-            answer.append(line)
-    
-    return answer
+    return [ ''.join(c * k for c in line) for line in picture for _ in range(k) ]
