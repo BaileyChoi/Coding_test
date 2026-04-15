@@ -1,10 +1,10 @@
 def solution(rank, attendance):
-    answer = []
+    students = []
     
-    for i, a in enumerate(attendance):
+    for i, (r, a) in enumerate(zip(rank, attendance)):
         if a:
-            answer.append((rank[i], i))
+            students.append((r, i))
             
-    answer.sort()
+    students.sort()
     
-    return 10000 * answer[0][1] + 100 * answer[1][1] + answer[2][1]
+    return 10000 * students[0][1] + 100 * students[1][1] + students[2][1]
