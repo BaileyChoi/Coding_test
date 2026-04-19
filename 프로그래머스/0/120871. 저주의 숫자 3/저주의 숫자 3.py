@@ -1,15 +1,9 @@
 def solution(n):
-    a = 1
-    count = 0
+    answer = 0
     
-    while count < n:
-        if a % 3 == 0 or '3' in str(a):
-            a += 1
-            continue
-        
-        count += 1
-        
-        if count == n:
-            return a
-        
-        a += 1
+    for _ in range(n):
+        answer += 1
+        while answer % 3 == 0 or '3' in str(answer):
+            answer += 1
+    
+    return answer
