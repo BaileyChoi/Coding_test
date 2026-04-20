@@ -1,11 +1,7 @@
 def solution(A, B):
-    if A == B:
-        return 0
-    
-    for i in range(1, len(A)):
-        new = A[-i:] + A[:-i]
-        
-        if new == B:
+    for i in range(len(A)):
+        if A == B:
             return i
-    
+        A = A[-1] + A[:-1]
+        
     return -1
