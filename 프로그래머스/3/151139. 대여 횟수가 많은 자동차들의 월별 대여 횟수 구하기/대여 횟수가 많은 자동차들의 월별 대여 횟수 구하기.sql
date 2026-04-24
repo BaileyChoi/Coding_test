@@ -12,7 +12,7 @@ WHERE
         FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
         WHERE 
             START_DATE >= '2022-08-01'
-            AND START_DATE < '2022-11-01'
+            AND START_DATE <= '2022-10-31'
         GROUP BY CAR_ID
         HAVING COUNT(*) >= 5
     )
